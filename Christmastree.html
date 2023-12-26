@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1a1a1a;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+    <title>給亞蔚</title>
+</head>
+<body>
+    <canvas id="christmasTreeCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('christmasTreeCanvas');
+        const ctx = canvas.getContext('2d');
+        const snowflakes = [];
+
+        function drawChristmasTree() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            canvas.width = width;
+            canvas.height = height;
+
+            const treeHeight = height * 0.6;
+            const treeWidth = treeHeight * 0.4;
+
+            // Draw tree trunk
+            ctx.fillStyle = '#8B4513'; // Brown color
+            ctx.fillRect(width / 2- treeWidth /6 , height - treeHeight, treeWidth /3, treeHeight);
+
+            // Draw tree
+            ctx.fillStyle = '#228B22'; // Green color
+            ctx.beginPath();
+            ctx.moveTo(width / 2, height/2 - treeHeight/2);
+            ctx.lineTo(width / 2 - treeWidth / 2, height/2.7);
+            ctx.lineTo(width / 2 + treeWidth / 2, height/2.7);
+            ctx.fill();
+
+            // Draw tree
+            ctx.fillStyle = '#228B22'; // Green color
+            ctx.beginPath();
+            ctx.moveTo(width / 2, height/2 - treeHeight/3);
+            ctx.lineTo(width / 2 - treeWidth / 1.3, height/1.8);
+            ctx.lineTo(width / 2 + treeWidth / 1.3, height/1.8);
+            ctx.fill();
+
+            // Draw tree
+            ctx.fillStyle = '#228B22'; // Green color
+            ctx.beginPath();
+            ctx.moveTo(width / 2, height/2 - treeHeight/5);
+            ctx.lineTo(width / 2 - treeWidth / 1, height/1.3);
+            ctx.lineTo(width / 2 + treeWidth / 1, height/1.3);
+            ctx.fill();
+
+            
+
+            // Draw star at the top
+            drawStar(width / 2, height/2 - treeHeight/2 , 5, 40, 20, '#FFD700'); // Gold color
+            drawStar(width / 2, height/2 - treeHeight/2 , 5, 20, 10, '#F39C12');
+
+            // Draw ornaments (you can customize this part)
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+            ctx.arc(width / 2 - treeWidth / 1.8, height - treeHeight + treeHeight * 0.2, treeWidth * 0.045, 0, 2 * Math.PI);
+            ctx.fill();
+            // Draw ornaments (you can customize this part)
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+            ctx.arc(width / 2 - treeWidth / 2, height - treeHeight + treeHeight * 0.55, treeWidth * 0.055, 0, 2 * Math.PI);
+            ctx.fill();
+            // Draw ornaments (you can customize this part)
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 8, height - treeHeight - treeHeight * 0.2, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 3, height - treeHeight + treeHeight * 0.2, treeWidth * 0.048, 0, 2 * Math.PI);
+            ctx.fill();
+            // Draw ornaments (you can customize this part)
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(width / 2 - treeWidth / 5, height - treeHeight - treeHeight * 0.01, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(width / 2 - treeWidth / 5, height - treeHeight - treeHeight * 0.01, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 5, height - treeHeight + treeHeight * 0.08, treeWidth * 0.045, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle = 'lightblue';
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 4, height - treeHeight + treeHeight * 0.4, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle = 'lightblue';
+            ctx.beginPath();
+            ctx.arc(width / 2 - treeWidth / 3, height - treeHeight - treeHeight * 0.1, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle = 'Pink';
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 3.5, height - treeHeight - treeHeight * 0.1, treeWidth * 0.04, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 3, height - treeHeight + treeHeight * 0.1, treeWidth * 0.04, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(width / 2 - treeWidth / 7, height - treeHeight + treeHeight * 0.45, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.fillStyle = 'orange';
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 3, height - treeHeight + treeHeight * 0.55, treeWidth * 0.04, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(width / 2 - treeWidth / 3, height - treeHeight + treeHeight * 0.35, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(width / 2 - treeWidth / 11, height - treeHeight + treeHeight * 0.15, treeWidth * 0.045, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.fillStyle = 'White';
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 3.6, height - treeHeight + treeHeight * 0.5, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.arc(width / 2 - treeWidth / 3.5, height - treeHeight + treeHeight * 0.1, treeWidth * 0.04, 0, 2 * Math.PI);
+
+            ctx.fill();
+
+            ctx.fillStyle = '#CBC3E3';
+            ctx.beginPath();
+            ctx.arc(width / 2 + treeWidth / 1.45, height - treeHeight + treeHeight * 0.58, treeWidth * 0.05, 0, 2 * Math.PI);
+            ctx.arc(width / 2 - treeWidth / 10, height - treeHeight + treeHeight * 0.3, treeWidth * 0.04, 0, 2 * Math.PI);
+
+            ctx.fill();
+
+
+            // Add more ornaments as needed
+
+            
+
+            // Add more decorations as needed
+        }
+
+        function drawText() {
+            const text = "MERRY CHRISTMAS";
+            const fontSize = 30;
+            ctx.font = `${fontSize}px Congenial Black`;
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.fillText(text, canvas.width / 2, canvas.height / 10);
+        }
+
+        function updateSnowflakes() {
+            for (const snowflake of snowflakes) {
+                snowflake.y += snowflake.speed;
+
+                // Reset snowflake position if it goes below the canvas
+                if (snowflake.y > canvas.height) {
+                snowflake.y = 0;
+                }
+            }
+        }
+
+        function drawStar(cx, cy, spikes, outerRadius, innerRadius, color) {
+            var rot = (Math.PI / 2) * 3; // Initial rotation angle
+            var x = cx; // X-coordinate of the center
+            var y = cy; // Y-coordinate of the center
+            var step = Math.PI / spikes; // Angle between each spike
+
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - outerRadius); // Starting point
+
+            for (var i = 0; i < spikes; i++) {
+                x = cx + Math.cos(rot) * outerRadius; // Calculate outer point X-coordinate
+                y = cy + Math.sin(rot) * outerRadius; // Calculate outer point Y-coordinate
+                ctx.lineTo(x, y); // Draw line to outer point
+
+                rot += step; // Increment rotation angle
+
+                x = cx + Math.cos(rot) * innerRadius; // Calculate inner point X-coordinate
+                y = cy + Math.sin(rot) * innerRadius; // Calculate inner point Y-coordinate
+                ctx.lineTo(x, y); // Draw line to inner point
+
+                rot += step; // Increment rotation angle
+            }
+
+            ctx.lineTo(cx, cy - outerRadius); // Connect back to the starting point
+            ctx.closePath(); // Close the path
+            ctx.fillStyle = color; // Set fill color
+            ctx.fill(); // Fill the star
+        }
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            updateSnowflakes();
+            drawChristmasTree();
+            drawText();  // Draw "MERRY CHRISTMAS"
+
+            // Draw snowflakes 這邊改下雪
+            ctx.fillStyle = 'Pink'; // White color for the snow
+            for (const snowflake of snowflakes) {
+                ctx.beginPath();
+                ctx.arc(snowflake.x, snowflake.y, snowflake.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+           
+        requestAnimationFrame(draw);
+        }
+
+        function createSnowflake() {  
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            canvas.width = width;
+            canvas.height = height;
+            const size = Math.random() * 5 + 2;
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: size,
+                speed: size / 8, //這邊改雪量
+            };
+        }
+
+        // Create initial set of snowflakes
+        for (let i = 0; i < 100; i++) {
+            snowflakes.push(createSnowflake());
+        }
+
+        // Update snowflakes and draw the scene
+        draw();
+        // Initial draw
+        
+
+        // Redraw on window resize
+        window.addEventListener('resize', drawChristmasTree);
+    </script>
+</body>
+</html>
